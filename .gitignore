@@ -3,11 +3,26 @@
 *.exe
 *.test
 *.out
+*.exe~
+*.dll
+*.so
+*.dylib
+*.a
+*.log
+*.zip
+*.tar.gz
+*.tmp
+vendor/
+
+# Go module cache
+Gopkg.lock
+Gopkg.toml
 
 # Editor/OS
 .vscode/*
 !.vscode/extensions.json
 .DS_Store
+Thumbs.db
 
 # Claude Code lokale Präferenzen (nicht einchecken)
 CLAUDE.local.md
