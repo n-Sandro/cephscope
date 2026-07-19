@@ -1,27 +1,27 @@
-# Architektur – Cephscope
+# Architecture – Cephscope
 
-Status: Entwurf / Skizze. Wird mit dem Projekt weiterentwickelt.
+Status: Draft / sketch. Will evolve with the project.
 
-## Ziel
-Collector für Ceph-Cluster-Metriken, ähnlich NetApp Harvest.
-Später ggf. Appliance oder SaaS, sobald der Collector sich bewährt hat.
+## Goal
+Collector for Ceph cluster metrics, similar to NetApp Harvest.
+Later possibly an appliance or SaaS once the collector proves itself.
 
-## Grobkomponenten (Skizze)
-- **Scraper-Interface**: abstrahiert die verschiedenen Ceph-Datenquellen
-  (Prometheus-mgr-Modul, ceph-exporter, Dashboard REST API, CLI-Fallback)
-  hinter einer einheitlichen Schnittstelle.
-- **Exporter-Interface**: nimmt aggregierte/abgeleitete Metriken entgegen
-  und stellt sie nach außen bereit (z. B. Prometheus-Format, später ggf.
-  weitere Backends).
-- **Template-System**: Harvest-artiges Mapping von Rohcountern auf
-  benannte, dokumentierte Metriken (siehe docs/metrics.md).
-- **Aggregation/Multi-Cluster**: mehrere Cluster einsammeln und konsolidiert
-  bereitstellen.
+## High-level components (sketch)
+- **Scraper interface**: abstracts the different Ceph data sources
+  (Prometheus mgr module, ceph-exporter, dashboard REST API, CLI fallback)
+  behind a unified interface.
+- **Exporter interface**: accepts aggregated/derived metrics
+  and exposes them externally (e.g. Prometheus format, later possibly
+  additional backends).
+- **Template system**: Harvest-like mapping of raw counters to
+  named, documented metrics (see `docs/metrics.md`).
+- **Aggregation/multi-cluster**: collect multiple clusters and provide
+  consolidated output.
 
-## Offene Punkte
-- Konkretes Interface-Design für Scraper/Exporter noch nicht final
-- Config-Format für Multi-Cluster-Setup noch offen
-- Dashboards: welches Tool (Grafana?) und wie werden sie ausgeliefert
+## Open questions
+- Concrete interface design for scraper/exporter not final
+- Config format for multi-cluster setup still open
+- Dashboards: which tool (Grafana?) and how to deliver them
 
-## Entscheidungshistorie
-Siehe docs/adr/ für einzelne Architekturentscheidungen (ADRs).
+## Decision history
+See `docs/adr/` for individual architecture decisions (ADRs).

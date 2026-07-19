@@ -1,24 +1,24 @@
 # Cephscope
 
-Metrik-Collector für Ceph-Cluster (Vorbild: NetApp Harvest).
-Sprache: Go. MVP-Fokus: 1 Cluster, Kern-Metriken.
+Metrics collector for Ceph clusters (inspired by NetApp Harvest).
+Language: Go. MVP focus: 1 cluster, core metrics.
 
-Siehe @ARCHITECTURE.md für Architektur und @docs/metrics.md für Metrik-Mapping.
-Ausführliche Vorplanung: @docs/planning.md
-Entscheidungen werden als ADRs in docs/adr/ festgehalten.
+See `ARCHITECTURE.md` for architecture and `docs/metrics.md` for metric mapping.
+Detailed planning: `docs/planning.md`
+Decisions are recorded as ADRs in `docs/adr/`.
 
-## Datenquellen
-- Prometheus-mgr-Modul (`ceph mgr module enable prometheus`), Port 9283
-- ceph-exporter-Daemon (pro Host, seit neueren Releases nötig für vollständige Perf-Counter)
-- Ceph Dashboard REST API (JSON, für Inventar/Metadaten)
-- CLI mit `--format json` als Fallback
+## Data sources
+- Prometheus mgr module (`ceph mgr module enable prometheus`), port 9283
+- ceph-exporter daemon (per host, required in newer releases for complete perf counters)
+- Ceph Dashboard REST API (JSON, for inventory/metadata)
+- CLI with `--format json` as fallback
 
-## Differenzierung ggü. bestehendem Ceph-Prometheus-Exporter
-Rohdaten sind schon da – Mehrwert liegt in: Aggregation, Multi-Cluster-Support,
-sinnvolle abgeleitete Kennzahlen, fertige Dashboards, Harvest-artiges
-Template-System für Metrik-Mappings. Nicht einfach Rohdaten-Export duplizieren.
+## Differentiation vs existing Ceph Prometheus exporter
+Raw data already exists – value comes from aggregation, multi-cluster support,
+meaningful derived metrics, ready dashboards, and a Harvest-like
+template system for metric mappings. Not just duplicating raw data export.
 
-## Konventionen
-- Go-Module-Struktur, statische Binaries als Build-Ziel
-- Neue Architekturentscheidungen als ADR in docs/adr/ dokumentieren, nicht nur im Chat klären
-- Metrik-Mappings zentral in docs/metrics.md pflegen (Harvest-artiges Template-System)
+## Conventions
+- Go module structure, static binaries as build target
+- Document new architecture decisions as ADRs in `docs/adr/`, not only in chat
+- Maintain metric mappings centrally in `docs/metrics.md` (Harvest-like template system)

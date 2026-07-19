@@ -1,18 +1,17 @@
-# ADR 0001: Projektname und Sprache
+# ADR 0001: Project name and language
 
-Status: Angenommen
+Status: Accepted
 
-## Kontext
-Es wurde ein Collector für Ceph-Cluster-Metriken geplant, vergleichbar mit
-NetApp Harvest.
+## Context
+A collector for Ceph cluster metrics was planned, comparable to NetApp Harvest.
 
-## Entscheidung
-- Name: **Cephscope** (geprüft: keine Kollision auf GitHub/npm/PyPI;
-  Domain vermutlich frei, aber nicht final verifiziert)
-- Sprache: **Go** (wie Harvest selbst, gute Prometheus-Client-Libs,
-  statische Binaries, gut geeignet für spätere Appliance)
+## Decision
+- Name: **Cephscope** (checked: no collision on GitHub/npm/PyPI;
+  domain likely available but not finally verified)
+- Language: **Go** (like Harvest itself, good Prometheus client libraries,
+  static binaries, well suited for a future appliance)
 
-## Konsequenzen
-- Go-Tooling und -Ökosystem bestimmen weitere technische Entscheidungen
-  (Modul-Struktur, Build, Client-Libs)
-- Domain/Account-Verifizierung für "cephscope" ist offener nächster Schritt
+## Consequences
+- Go tooling and ecosystem will determine further technical decisions
+  (module structure, build, client libraries)
+- Domain/account verification for "cephscope" remains an open next step

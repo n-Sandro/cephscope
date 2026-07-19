@@ -1,45 +1,45 @@
-# Projekt: Cephscope – Metrik-Collector für Ceph (wie NetApp Harvest)
+# Project: Cephscope – metrics collector for Ceph (like NetApp Harvest)
 
-## Ziel
-Collector für Ceph-Cluster-Metriken, ähnlich NetApp Harvest.
-Später ggf. Appliance oder SaaS, sobald Collector sich bewährt hat.
+## Goal
+Collector for Ceph cluster metrics, similar to NetApp Harvest.
+Later possibly an appliance or SaaS once the collector proves itself.
 
-## Entscheidungen bisher
-- Name: **Cephscope** (geprüft: keine Kollision auf GitHub/npm/PyPI,
-  Domain vermutlich frei aber nicht final verifiziert)
-- Sprache: **Go** (wie Harvest selbst, gute Prometheus-Client-Libs,
-  statische Binaries, gut für spätere Appliance)
+## Decisions so far
+- Name: **Cephscope** (checked: no collision on GitHub/npm/PyPI,
+  domain likely available but not finally verified)
+- Language: **Go** (like Harvest itself, good Prometheus client libraries,
+  static binaries, well suited for a future appliance)
 
-## Ceph-Datenquellen (recherchiert)
-- Prometheus-mgr-Modul (`ceph mgr module enable prometheus`), Port 9283,
-  liefert Rohcounter im Prometheus-Textformat
-- ceph-exporter-Daemon (pro Host, seit neueren Releases nötig für
-  vollständige Perf-Counter, da mgr-Modul sie nicht mehr standardmäßig liefert)
-- Ceph Dashboard REST API (JSON, für Inventar/Metadaten)
-- CLI mit --format json als Fallback
+## Ceph data sources (researched)
+- Prometheus mgr module (`ceph mgr module enable prometheus`), port 9283,
+  provides raw counters in Prometheus text format
+- ceph-exporter daemon (per host, required in newer releases for
+  complete perf counters, because the mgr module no longer provides them by default)
+- Ceph Dashboard REST API (JSON, for inventory/metadata)
+- CLI with `--format json` as fallback
 
-## Differenzierung ggü. bestehendem Ceph-Prometheus-Exporter
-Rohdaten sind schon da – Mehrwert liegt in: Aggregation, Multi-Cluster-Support,
-sinnvolle abgeleitete Kennzahlen, fertige Dashboards, Harvest-artiges
-Template-System für Metrik-Mappings.
+## Differentiation vs existing Ceph Prometheus exporter
+Raw data already exists – value lies in aggregation, multi-cluster support,
+meaningful derived metrics, ready dashboards, and a Harvest-like
+template system for metric mappings.
 
-## Grobe Aufwandsschätzung (bei 1-2h/Tag)
-- MVP (1 Cluster, Kern-Metriken): 3-6 Wochen
-- Multi-Cluster + Config: +3-4 Wochen
-- Dashboards/Aggregation: +2-4 Wochen
-- Stabilisierung/Release v1: +2-3 Wochen
-- Bis "guter Collector": ~3-5 Monate
-- Appliance danach: +2-4 Monate
-- SaaS danach: +4-6+ Monate
+## Rough effort estimate (at 1-2h/day)
+- MVP (1 cluster, core metrics): 3-6 weeks
+- Multi-cluster + config: +3-4 weeks
+- Dashboards/aggregation: +2-4 weeks
+- Stabilization/release v1: +2-3 weeks
+- Until a "good collector": ~3-5 months
+- Appliance afterwards: +2-4 months
+- SaaS afterwards: +4-6+ months
 
-## Tooling-Setup
-- Planung/Architektur: Claude Chat im Project "Ceph Harvest"
-- Coding: Claude Code (VS-Code-Extension, offizielle Anthropic-Extension,
-  benötigt VS Code 1.94+)
-- Repo-Struktur: ARCHITECTURE.md, docs/adr/ für Entscheidungen,
-  docs/metrics.md für Metrik-Mapping
+## Tooling setup
+- Planning/architecture: Claude Chat in project "Ceph Harvest"
+- Coding: Claude Code (VS Code extension, official Anthropic extension,
+  requires VS Code 1.94+)
+- Repo structure: `ARCHITECTURE.md`, `docs/adr/` for decisions,
+  `docs/metrics.md` for metric mapping
 
-## Offene nächste Schritte
-- GitHub-Account/Domain final für "cephscope" verifizieren
-- Go-Modul-Grundstruktur aufsetzen
-- Erste Architekturskizze (Scraper-Interface, Exporter-Interface)
+## Open next steps
+- Verify GitHub account/domain for "cephscope" finally
+- Set up Go module base structure
+- First architecture sketch (scraper interface, exporter interface)
