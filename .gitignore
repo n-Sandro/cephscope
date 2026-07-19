@@ -1,0 +1,13 @@
+# Go
+/bin/
+*.exe
+*.test
+*.out
+
+# Editor/OS
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+
+# Claude Code lokale Präferenzen (nicht einchecken)
+CLAUDE.local.md
